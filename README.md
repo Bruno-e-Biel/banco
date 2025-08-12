@@ -8,19 +8,19 @@ Descrição
 
 ### Estrutura do projeto
 
-root/
-├── build/
-│   ├── bin/
-│   └── obj/
-├── include/
-│   └── utils.h
-├── src/
-│   ├── main.c
-│   └── utils.c
-├── lib/
-├── Makefile
-├── README.md
-└── .gitignore
+root/ <br>
+├── build/ <br>
+│   ├── bin/ <br>
+│   └── obj/ <br>
+├── include/ <br>
+│   └── utils.h <br>
+├── src/ <br>
+│   ├── main.c <br>
+│   └── utils.c <br>
+├── lib/ <br>
+├── Makefile <br>
+├── README.md <br>
+└── .gitignore <br>
 
 ### Compilando e rodando
 
