@@ -29,7 +29,7 @@ Para compilar e testar o projeto basta executar:
 git clone https://github.com/Bruno-e-Biel/banco
 cd ./banco
 make
-./build/app
+./build/bin/app
 ```
 
 ---
