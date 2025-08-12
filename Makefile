@@ -1,23 +1,34 @@
-CXX = gcc
+CC = gcc
+CFLAGS = -Wall -Iinclude
+LDFLAGS = 
 
-ifeq ($(MODE), debug)
-	CXXFLAGS = -I./include -Wall -v -g
-else
-	CXXFLAGS = -I./include/ -Wall
-endif
+BUILD_DIR ?= build
+BIN_DIR = $(BUILD_DIR)/bin
+OBJ_DIR = $(BUILD_DIR)/obj
+SRC_DIR = src
+INC_DIR = include
 
-LIBSOURCES ?= ./include/utils.c
+TARGET = $(BIN_DIR)/app
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/utils.c
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
-SRC ?= ./src/main.c
+.PHONY: all clean
 
-BUILD_DIR = ./build
+all: $(TARGET)
 
-TARGET ?= app
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
-all:
-	$(CXX) $(SRC) $(LIBSOURCES) $(CXXFLAGS) -o $(BUILD_DIR)/$(TARGET)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f build/*
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
 

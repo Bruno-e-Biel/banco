@@ -4,9 +4,25 @@ Descrição
 
 ---
 
-# Documentação do sistema
+## Documentação do sistema
 
-## Compilando e rodando
+### Estrutura do projeto
+
+root/
+├── build/
+│   ├── bin/
+│   └── obj/
+├── include/
+│   └── utils.h
+├── src/
+│   ├── main.c
+│   └── utils.c
+├── lib/
+├── Makefile
+├── README.md
+└── .gitignore
+
+### Compilando e rodando
 
 Para compilar e testar o projeto basta executar:
 ```bash
@@ -18,7 +34,7 @@ make
 
 ---
 
-# Autores
+### Autores
 
 Bruno
 Gabriel
