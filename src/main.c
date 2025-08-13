@@ -1,6 +1,5 @@
 #include "../include/utils.h"
 #include <stdio.h>
-#include <unistd.h>
 
 int main(void){
     welcome();
