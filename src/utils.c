@@ -1,6 +1,21 @@
 #include <stdio.h>
-#include "utils.h"
+#include "../include/utils.h"
 
-void welcome(void){
-    printf("Welcome!\n");
+void readfile(char *filepath){
+
+    FILE *fileptr;
+    char file_buffer[255];
+
+    fileptr = fopen(filepath, "r");
+
+    if (fileptr == NULL){
+        printf("Error to open file.\n");
+    }
+
+    while(fgets(file_buffer, 255, fileptr) != NULL){
+        printf("%s", file_buffer);
+    }
+
+    fclose(fileptr);
+
 }
