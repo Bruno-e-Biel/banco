@@ -4,23 +4,23 @@
 #include <stdbool.h>
 #include <string.h>
 
-bool auth = false;
-bool should_close = false;
-
-void login(Account *account, char *in_email, char *in_password);
-void menu(Account *account);
+void menu(Account *account, bool *should_close);
 
 int main(void){
     // readfile("data/login.json"); // apenas umas ideia
     Account account;
+
     account.id = 1;
     strcpy(account.name, "User");
     strcpy(account.email, "usermail@gmail.com");
     strcpy(account.password, "000");
     account.cash = 0;
     account.history_length = 0;
+
     char in_email[255];
     char in_password[255];
+    bool auth = false;
+    bool should_close = false;
 
     printf("Informe o email e senha: \n(Email: -1 para sair)\n");
 
@@ -30,38 +30,24 @@ int main(void){
         fflush(stdin);
         in_email[strcspn(in_email, "\n")] = 0;
         in_password[strcspn(in_password, "\n")] = 0;
-        login(&account, in_email, in_password);
+        login(&account, in_email, in_password, &auth, &should_close);
     }
 
     while (auth == 1 && should_close == 0) {
-        menu(&account);
+        menu(&account, &should_close);
     }
 
     return 0;
 }
 
-void login(Account *account, char *in_email, char *in_password) {
-    if (
-        !strcmp(in_email, account->email) && 
-        !strcmp(in_password, account->password))
-    {
-        auth = true;
-    } else if (!strcmp(in_email, "-1")) {
-        should_close = true;
-        auth = false;
-    } else {
-        auth = false;
-    }
-}
-
-void menu(Account *account) {
+void menu(Account *account, bool *should_close) {
     unsigned int operation;
     printf("\nBem vindo! Selecione uma operação: \n0-Sair | 1-Depositar | 2-Sacar | 3-Ver Historico | 4-Ver Saldo \n");
     scanf("%d%*c", &operation);
 
     switch (operation) {
         case 0:
-            should_close = true;
+            *should_close = true;
         break;
         case 1:
             deposit(account);

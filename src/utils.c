@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 #include "../include/utils.h"
 #include "../include/types.h"
 
@@ -54,3 +56,18 @@ void view_history(Account *account){
 void view_cash(Account *account){
     printf("Saldo: %.2f", account->cash);
 }
+
+void login(Account *account, char *in_email, char *in_password, bool *auth, bool *should_close) {
+    if (
+        !strcmp(in_email, account->email) && 
+        !strcmp(in_password, account->password))
+    {
+        *auth = true;
+    } else if (!strcmp(in_email, "-1")) {
+        *should_close = true;
+        *auth = false;
+    } else {
+        *auth = false;
+    }
+}
+
