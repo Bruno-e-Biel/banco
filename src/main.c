@@ -1,7 +1,6 @@
 #include "../include/utils.h" // Transactions operations
 #include "../include/types.h" // def types to Account
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 
@@ -19,6 +18,7 @@ int main(void){
     strcpy(account.email, "usermail@gmail.com");
     strcpy(account.password, "000");
     account.cash = 0;
+    account.history_length = 0;
     char in_email[255];
     char in_password[255];
 
