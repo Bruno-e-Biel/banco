@@ -3,12 +3,12 @@
 typedef  enum {
     DEPOSIT,
     WITHDRAW
-} TransationType;
+} TransactionType;
 
 typedef struct {
-    TransationType type;
+    TransactionType type;
     float value;
-} Transation;
+} Transaction;
 
 typedef struct {
     int id;
@@ -16,6 +16,7 @@ typedef struct {
     char email[100];
     char password[100];
     float cash;
-    Transation history[50];
+    Transaction history[100];
+    int history_length;
 
 } Account;
