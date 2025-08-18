@@ -8,6 +8,7 @@ typedef  enum {
 typedef struct {
     TransactionType type;
     float value;
+    char date[50];
 } Transaction;
 
 typedef struct {
@@ -18,5 +19,4 @@ typedef struct {
     float cash;
     Transaction history[100];
     int history_length;
-
 } Account;

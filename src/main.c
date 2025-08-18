@@ -1,4 +1,4 @@
-#include "../include/utils.h" // Transactions operations
+#include "../include/operations.h" // Transactions operations
 #include "../include/types.h" // def types to Account
 #include <stdio.h>
 #include <stdbool.h>
@@ -7,7 +7,6 @@
 void menu(Account *account, bool *should_close);
 
 int main(void){
-    // readfile("data/login.json"); // apenas umas ideia
     Account account;
 
     account.id = 1;
@@ -22,7 +21,7 @@ int main(void){
     bool auth = false;
     bool should_close = false;
 
-    printf("Informe o email e senha: \n(Email: -1 para sair)\n");
+    printf("Informe o email e senha (Email: -1 para sair): \n");
 
     while (auth == 0 && should_close == 0){
         fgets(in_email, sizeof(in_email), stdin);
